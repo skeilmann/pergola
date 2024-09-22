@@ -5,10 +5,9 @@
 
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="icon" type="image/png"
-        href="https://www.pergole-retractabile.ro/oferta-pret-new/assets/images/favicon.png" />
+    <link rel="icon" type="image/png" href="/img/favicon.png" />
 
-    <!-- <link href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" rel="stylesheet" /> -->
+    <!-- <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" /> -->
     <link href="./css/smart_wizard_arrows.css" rel="stylesheet" />
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <link href="https://fonts.googleapis.com/css?family=Raleway:300,400,600,700,800&display=swap&subset=latin-ext"
@@ -109,7 +108,7 @@
             <div class="col-12 align-self-center">
                 <div class="m-0 mt-3 m-lg-5 ">
                     <form id="new-form" action="https://www.pergole-retractabile.ro/oferta-pret-new/home/index"
-                        method="post" class="ajax-form" data-ajax-alert="#oferta_alert" data-recaptcha="true"
+                        method="post" class="ajax-form" data-ajax-alert="#oferta_alert" data-recaptcha="false"
                         enctype="multipart/form-data">
                         <input type="hidden" name="token" id="token">
                         <input type="hidden" name="oferta" value>
@@ -119,14 +118,14 @@
                                     <a class="nav-link" href="#step-1" data-repo="cat">
                                         <img src="https://www.pergole-retractabile.ro/oferta-pret-new/assets/images/touch.png"
                                             width="24" height="24">
-                                        <span>Selectare categorie produs</span>
+                                        <span>Selectează categoria</span>
                                     </a>
                                 </li>
                                 <li>
                                     <a class="nav-link" href="#step-2" data-repo="produs">
                                         <img src="https://www.pergole-retractabile.ro/oferta-pret-new/assets/images/touch.png"
                                             width="24" height="24">
-                                        <span>Selectare tip produs</span>
+                                        <span>Selectează tip produs</span>
                                     </a>
                                 </li>
                                 <li>
@@ -146,22 +145,18 @@
                             </ul>
                             <div class="tab-content box-wizard rounded p-1 p-lg-4">
                                 <div id="step-1" class="tab-pane step" role="tabpanel">
-                                    <div class="h1 fw-bold text-center mb-3 mb-lg-4">OFERTE DE PREȚ SUN LEADER</div>
+                                    <div class="h1 text-center mb-3 mb-lg-4">OFERTE DE PREȚ</div>
                                     <div class="row ">
                                         <div class="col-lg-9 mx-auto text-center">
-                                            <p class="mb-5 d-none d-lg-block">Ne dorim să îți oferim o propunere cât mai
-                                                apropiată de
-                                                cerințele tale, așa că te rugăm să completezi câmpurile de mai jos cu
-                                                informații cât
-                                                mai detaliate și relevante. Colegii noștri vor personaliza oferta de
-                                                preț și
-                                                propunerea de amenajare conform nevoilor și dorințelor tale.
-                                                Solicită oferta personalizată!</p>
-                                            <p class="mb-2 mb-lg-4 text-bordo">Te rugăm să selectezi categoria
-                                                dorită </p>
+                                            <p class="mb-5 d-none d-lg-block">Pentru ați oferi o ofertă de preț cât mai
+                                                apropiată cerințelor tale, te rugăm să completezi câmpurile de mai jos
+                                                cu informații cât mai detaliate și relevante.
+                                            </p>
+                                            <p class="mb-2 mb-lg-4 text-bordo">Te rugăm să selectezi categoria dorită
+                                            </p>
                                         </div>
                                         <div class="col-12" id="cats-list">
-                                            <div class="row row-cols-2 row-cols-lg-5">
+                                            <div class="row row-cols-2 row-cols-lg-4">
                                                 <div class="col">
                                                     <label class="radio-label next-step">
                                                         <input type="radio" name="cat" value="1" class="radio-input">
@@ -171,7 +166,7 @@
                                                                 alt="PERGOLE RETRACTABILE" class="img-fluid">
                                                         </div>
                                                         <div class="text-center z-1 position-relative">
-                                                            PERGOLE RETRACTABILE </div>
+                                                            PERGOLE </div>
                                                     </label>
                                                 </div>
                                                 <div class="col">
@@ -207,19 +202,7 @@
                                                                 alt="DECK" class="img-fluid">
                                                         </div>
                                                         <div class="text-center z-1 position-relative">
-                                                            DECK </div>
-                                                    </label>
-                                                </div>
-                                                <div class="col">
-                                                    <label class="radio-label next-step">
-                                                        <input type="radio" name="cat" value="5" class="radio-input">
-                                                        <div
-                                                            class="p-3 py-0 py-lg-3 rounded bg-prod mb-3 z-1 position-relative check-img">
-                                                            <img src="https://www.pergole-retractabile.ro/oferta-pret-new/assets/pergole/cat-5.png?v=5"
-                                                                alt="ALTE ACCESORII" class="img-fluid">
-                                                        </div>
-                                                        <div class="text-center z-1 position-relative">
-                                                            ALTE ACCESORII </div>
+                                                            PARDOSELI </div>
                                                     </label>
                                                 </div>
                                             </div>
@@ -971,8 +954,8 @@
                 theme: 'arrows',
                 justified: true,
                 lang: {
-                    next: 'MAI DEPARTE',
-                    previous: 'ÎNAPOI '
+                    next: 'Next',
+                    previous: 'Previous'
                 },
                 autoAdjustHeight: false,
                 transition: {
@@ -989,7 +972,7 @@
                 $(".sw-btn-prev").removeClass('disabled').prop('disabled', false);
                 $(".sw-btn-next").removeClass('disabled').prop('disabled', false);
                 if (stepPosition === 'first') {
-                    $('.sw-btn-prev').addClass('back-to-site').html('ÎNAPOI LA SITE');
+                    $('.sw-btn-prev').addClass('back-to-site').html('Back to site');
                 } else if (stepPosition === 'last') {
                     $(".sw-btn-next").hide();
                     $('.sw-btn-submit').show();
@@ -1014,25 +997,19 @@
                     if (form) {
                         if (currentStepIdx === 0) {
                             if (cat === 0) {
-                                $('p.text-bordo').addClass('shake-horizontal fs-5');
+                                $('p.text-bordo').addClass('shake-top fs-5');
                                 setTimeout(function () {
-                                    $('p.text-bordo').removeClass('shake-horizontal fs-5');
+                                    $('p.text-bordo').removeClass('shake-top fs-5');
                                 }, 1000);
                                 return false;
                             }
                         } else if (currentStepIdx === 1) {
-                            if (prod === 0) {
-                                $('p.text-bordo').addClass('shake-horizontal fs-5');
-                                setTimeout(function () {
-                                    $('p.text-bordo').removeClass('shake-horizontal fs-5');
-                                }, 1000);
-                                return false;
-                            }
-                            if (parseInt(cat) === 1) {
+
+                            if (cat === 1) {
                                 if ($('input[name="model"]:checked').val() === undefined) {
-                                    $('p.text-bordo').addClass('shake-horizontal fs-5');
+                                    $('p.text-bordo').addClass('shake-top fs-5');
                                     setTimeout(function () {
-                                        $('p.text-bordo').removeClass('shake-horizontal fs-5');
+                                        $('p.text-bordo').removeClass('shake-top fs-5');
                                     }, 1000);
                                     return false;
                                 }
@@ -1085,12 +1062,12 @@
 
             function provideContent(idx, stepDirection, stepPosition, selStep, callback) {
                 console.log(idx);
-                console.log('sunt aici');
                 // Only get ajax content on the forward movement
                 if (stepDirection === 'forward' && stepPosition === 'middle') {
                     let step = selStep.data('repo');
-                    // let repo = "jquery-smartwizard";
-                    let ajaxURL = base_url + "home/get_step/" + step;
+                    console.log(step);
+                    // let ajaxURL = base_url + "home/get_step/" + step;
+                    let ajaxURL = step + "_index.html";
                     let form = $('#new-form').serialize();
 
                     // Ajax call to fetch your content
@@ -1099,39 +1076,40 @@
                         url: ajaxURL,
                         data: form,
                         dataType: 'html',
-                        beforeSend: function (xhr) {
-                            // Show the loader
-                            $('#smartwizard').smartWizard("loader", "show");
-                        }
+                        // beforeSend: function (xhr) {
+                        //     // Show the loader
+                        //     $('#smartwizard').smartWizard("loader", "show");
+                        // }
                     }).done(function (res) {
                         // Resolve the Promise with the tab content
                         callback(res);
 
                         // Hide the loader
-                        $('#smartwizard').smartWizard("loader", "hide");
+                        // $('#smartwizard').smartWizard("loader", "hide");
                     }).fail(function (err) {
                         // Reject the Promise with error message to show as tab content
                         callback("Nu am reusit sa ma conectez la sursa de date");
-                        $('#smartwizard').smartWizard("loader", "hide");
+                        // $('#smartwizard').smartWizard("loader", "hide");
                     });
                 } else {
                     callback();
                 }
             }
 
-            $(document).on('change', 'input[name=prod]', function () {
-                let form = $('#new-form').serialize();
-                let ajaxURL = "https://www.pergole-retractabile.ro/oferta-pret-new/home/get_step/model";
-                $('#model_list').html('');
-                $.get(ajaxURL, form, function (data) {
-                    $('#model_list').html(data);
-                    $('#model_list').show();
+            // $(document).on('change', 'input[name=prod]', function () {
+            //     let form = $('#new-form').serialize();
+            //     let ajaxURL = "https://www.pergole-retractabile.ro/oferta-pret-new/home/get_step/model";
+            //     $('#model_list').html('');
+            //     $.get(ajaxURL, form, function (data) {
+            //         $('#model_list').html(data);
+            //         $('#model_list').show();
 
-                    $('html, body').animate({
-                        scrollTop: $("#model_list").offset().top
-                    }, 1000);
-                });
-            });
+            //         $('html, body').animate({
+            //             scrollTop: $("#model_list").offset().top
+            //         }, 1000);
+            //     });
+            // });
+
             $(document).on('change', '.radio-input', function () {
                 $(this).closest('.row').find('.radio-label').removeClass('active');
                 if ($(this).is(':checked')) {
@@ -1139,7 +1117,7 @@
                 }
             });
             $(document).on('click', '.back-to-site', function (e) {
-                location.href = 'https://www.pergole-retractabile.ro/';
+                location.href = 'https://www.google.com/';
             });
 
 
