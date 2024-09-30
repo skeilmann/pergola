@@ -1,0 +1,173 @@
+<div class="row">
+    <div class="col-lg-6">
+        <div class="fw-bold"><span class="text-danger">*</span> Dimensiuni:</div>
+        <div class="row">
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Lățime</label>
+                    <select id="pergola_height" name="pergola[height]" class="form-select">
+                        <option value="300">300</option>
+                        <option value="400">400</option>
+                        <option value="500">500</option>
+                        <option value="600">600</option>
+                        <option value="700">700</option>
+                        <option value="800">800</option>
+                        <option value="900">900</option>
+                        <option value="1000">1000</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Lungimea</label>
+                    <select name="pergola[width]" class="form-select" id="pergola_width">
+                        <option value="300">300</option>
+                        <option value="400">400</option>
+                        <option value="450">450</option>
+                        <option value="500">500</option>
+                        <option value="600">600</option>
+                        <option value="700">700</option>
+                        <option value="800">800</option>
+                        <option value="900">900</option>
+                        <option value="1000">1000</option>
+                        <option value="1100">1100</option>
+                        <option value="1200">1200</option>
+                        <option value="1300">1300</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="mb-3">
+                    <label class="form-label">Buc.</label>
+                    <input class="form-control text-right int" type="text" value="1" name="pergola[buc]" placeholder="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-6">
+        <div class="row">
+            <div class="col-lg-4 col-6 mb-lg-0 mb-3">
+                <div class="">
+                    <label class="fw-bold mb-lg-4 mb-1">Vopsea structură </label>
+                    <div id="vopsea" class="mb-2" style="max-width: 7rem;"></div>
+                </div>
+                <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tip_vopsea">Alege culoare</a>
+            </div>
+            <div class="col-lg-4 col-6 mb-lg-0 mb-3" id="box-membrana">
+                <div class="">
+                    <label class="fw-bold mb-lg-4 mb-1">Culoare membrana </label>
+                    <div id="membrana" class="mb-2" style="max-width: 7rem;"></div>
+                </div>
+                <a href="#" class="btn btn-danger alege-membrana" data-bs-toggle="modal"
+                    data-bs-target="#tip_culoare">Alege culoare</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <div class="fw-bold mb-2"><span class="text-danger">*</span> Sistem iluminare:</div>
+        <div class="row align-items-end">
+            <div class="col-lg-3">
+                <div class="form-check form-switch">
+                    <input name="pergola[lumini]" value="none" class="form-check-input" type="radio" role="switch"
+                        id="lumini1" checked>
+                    <label class="form-check-label" for="lumini1">Fara lumini</label>
+                </div>
+                <div class="form-check form-switch">
+                    <input name="pergola[lumini]" value="led" class="form-check-input" type="radio" role="switch"
+                        id="lumini2">
+                    <label class="form-check-label" for="lumini2">Iluminare cu lumini calde</label>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-check form-switch">
+                    <input class="form-check-input" name="pergola[dimmer]" type="checkbox" role="switch" id="dimmer"
+                        value="Da">
+                    <label class="form-check-label" for="dimmer">Dimmer (control intensitate lumini)</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-12">
+        <hr>
+        <div class="row ">
+            <div class="col-lg-3">
+                <div class="form-check form-switch">
+                    <input type="checkbox" name="pergola[senzor_ploaie]" class="form-check-input" id="senzor_ploaie">
+                    <label class="form-check-label" for="senzor_ploaie">Senzor ploaie</label>
+                </div>
+            </div>
+            <div class="col-lg-3">
+                <div class="form-check form-switch">
+                    <input type="checkbox" name="pergola[aplicatie]" class="form-check-input" id="aplicatie">
+                    <label class="form-check-label" for="aplicatie">Aplicație mobilă</label>
+                </div>
+            </div>
+        </div>
+        <hr>
+    </div>
+    <div class="col-lg-12">
+        <div class="fw-bold mb-2">Alte sisteme suplimentare:</div>
+        <div class="row">
+            <div class="mb-3 col-xxl-2 col-xl-3 col-md-6 col-6">
+                <label class="form-label">Închideri sticlă:</label>
+                <select class="form-select" name="add_sticla">
+                    <option></option>
+                    <option>SISTEME BALUSTRADĂ</option>
+                    <option>SISTEME TRECERE</option>
+                    <option>SISTEME SLIDING</option>
+                    <option>GLASS ROOF</option>
+                </select>
+            </div>
+            <div class="mb-3 col-xxl-2 col-xl-3 col-md-6 col-6">
+                <label class="form-label">Sisteme umbrire:</label>
+                <select class="form-select" name="add_umbrire">
+                    <option></option>
+                    <option>SISTEM UMBRIRE VERTICAL</option>
+                    <option>SISTEM UMBRIRE ORIZONTAL</option>
+                    <option>PERETE DE ALUMINIU (AluWall)</option>
+                </select>
+            </div>
+            <div class="mb-3 col-xxl-2 col-xl-3 col-md-6 col-6">
+                <label class="form-label">Decking (mp): </label>
+                <input type="text" class="form-control" name="deking[mp]">
+            </div>
+            <div class="mb-3 col-xxl-2 col-xl-3 col-md-6 col-6">
+                <label class="form-label">Accesorii:</label>
+                <select class="form-select" name="add_altele">
+                    <option></option>
+                    <option>ÎNCĂLZITOARE</option>
+                    <option>PURIFICATOARE</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="col-lg-12">
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-4">
+                <img alt="" class="img-fluid"
+                    src="https://www.pergole-retractabile.ro/oferta-pret-new/assets/pergole/flat-1-line.png?v=6">
+            </div>
+            <div class="col-lg-9 col-md-8 col-8">
+                <div>
+                    <div class="fw-bold mb-2">Specificații proiect, detalii suplimentare, precizări:</div>
+                    <textarea class="form-control" name="comment"></textarea>
+                </div>
+                <div>
+                    <div class="fw-bold mb-2">Atașează imagini/schițe ale terasei (opțional):</div>
+                    <div class="form-group">
+                        <div class="d-flex flex-wrap flex-lg-nowrap align-items-center">
+                            <label class="btn btn-outline-secondary border-2 fw-bold me-3">Alege fișier
+                                <input type="file" name="images[]" class="d-none" multiple>
+                            </label>
+
+                            <div class=" text-muted">Dimensiunea maxima a fisierului: 5mb (jpg, jpeg, png, pdf, doc)
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>

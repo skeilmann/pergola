@@ -1,0 +1,158 @@
+<div class="row">
+    <div class="col-lg-12 col-xxl-9">
+        <label class=""><b>Dimensiuni <span class="dglass d-none">acoperiș</span></b></label>
+        <div id="sticla_rows">
+            <div class="row no-gutters mb-3">
+                <div class="col-md-4 col-6">
+                    <div class="mb-2">
+                        <label>
+                            <span class="dglass d-none">Proiecție</span>
+                            <span class="stclass">Lățime</span> (mm)
+                        </label>
+                        <input id="height" name="sticla[height][]" class="form-control int">
+                    </div>
+                </div>
+                <div class="col-md-4 col-6">
+                    <div class="mb-2">
+                        <label>Înălțime (mm)</label>
+                        <input id="width" name="sticla[width][]" class="form-control int">
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <div class="mb-2">
+                        <label>Buc.</label>
+                        <input class="form-control text-right int" type="text" name="sticla[buc][]" placeholder="">
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 text-center">
+                    <div class="mb-2">
+                        <label class="d-block">Adaugă sistem</label>
+                        <a href="#" class="btn btn-success btn-sm mt-1" title="Vreau sa mai adaug un sistem"
+                            id="add-rows-sticla"><i class="fa fa-plus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script id="row_sticla" type="text/html">
+            <div class="row no-gutters mb-3">
+                <div class="col-md-4 col-6">
+                    <div class="mb-2">
+                        <input id="height" name="sticla[height][]" class="form-control int" placeholder="Lățime (mm)">
+                    </div>
+                </div>
+                <div class="col-md-4 col-6">
+                    <div class="mb-2">
+                        <input id="width" name="sticla[width][]" class="form-control int" placeholder="Înălțime (mm)">
+                    </div>
+                </div>
+                <div class="col-md-2 col-6">
+                    <div class="mb-2">
+                        <input class="form-control text-right int" type="text" name="sticla[buc][]" placeholder="Buc.">
+                    </div>
+                </div>
+                <div class="col-md-2 col-6 pt-1 text-center">
+                    <div class="mb-2">
+                        <a href="#" class="btn btn-danger btn-sm  remove-rows-sticla"><i class="fa fa-minus"></i></a>
+                    </div>
+                </div>
+            </div>
+        </script>
+
+        <div class="sticla-glass-roof d-none">
+            <label class=""><b>Dimensiuni laterale din sticla</b></label>
+            <div id="glass_roof_rows">
+                <div class="row no-gutters">
+                    <div class="col-md-4 col-6">
+                        <div class="mb-2">
+                            <label>Lățime (mm)</label>
+                            <input id="height" name="sticla[height_in][]" class="form-control int">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-6">
+                        <div class="mb-2">
+                            <label>Înălțime (mm)</label>
+                            <input id="width" name="sticla[width_in][]" class="form-control int">
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-6">
+                        <div class="mb-2">
+                            <label>Buc.</label>
+                            <input class="form-control text-right int" type="text" name="sticla[buc_in][]"
+                                placeholder="">
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-6 text-center">
+                        <div class="mb-2">
+                            <label class="d-block">Adaugă sistem</label>
+                            <a href="#" class="btn btn-success btn-sm mt-1" title="Vreau sa mai adaug un sistem"
+                                id="add-rows-glass_roof"><i class="fa fa-plus"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <script id="row_glass_roof" type="text/html">
+                <div class="row no-gutters">
+                    <div class="col-md-4 col-6">
+                        <div class="mb-2">
+                            <input id="height" name="sticla[height_in][]" class="form-control int" placeholder="Lățime (mm)">
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-6">
+                        <div class="mb-2">
+                            <input id="width" name="sticla[width_in][]" class="form-control int" placeholder="Înălțime (mm)">
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-6">
+                        <div class="mb-2">
+                            <input class="form-control text-right int" type="text" name="sticla[buc_in][]" placeholder="Buc.">
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-6 pt-1 text-center">
+                        <div class="mb-2">
+                            <a href="#" class="btn btn-danger btn-sm  remove-rows-glass_roof"><i class="fa fa-minus"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </script>
+        </div>
+
+        <div class="mb-3">
+            <div class="custom-control custom-switch">
+                <input type="checkbox" name="sticla[usa_senzor]" value="1" class="custom-control-input" id="usa_senzor">
+                <label class="custom-control-label" for="usa_senzor">Ușa automata cu senzor de mișcare</label>
+            </div>
+            <div class="custom-control custom-switch">
+                <input type="checkbox" name="sticla[usa_st]" value="1" class="custom-control-input" id="usa_st">
+                <label class="custom-control-label" for="usa_st">Ușa simpla cu deschidere manuala</label>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-3 col-md-4 col-4 d-none">
+
+            </div>
+            <div class="col-lg-9 col-md-8 col-12">
+                <div class="mb-3">
+                    <div class="fw-bold mb-2">Specificații proiect, detalii suplimentare, precizări:</div>
+                    <textarea class="form-control" name="comment"></textarea>
+                </div>
+                <div class="mb-3">
+                    <div class="fw-bold mb-2">Atașează imagini/schițe ale terasei (opțional):</div>
+                    <div class="form-group">
+                        <div class="d-flex align-items-center">
+                            <label class="btn btn-outline-secondary border-2 fw-bold me-3">Alege fișier
+                                <input type="file" name="images[]" class="d-none" multiple>
+                            </label>
+
+                            <div class=" text-muted">Dimensiunea maxima a fisierului: 5mb (jpg, jpeg, png, pdf, doc)
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+    </div>
+
+</div>
