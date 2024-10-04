@@ -287,10 +287,10 @@
                                                 </label>
                                             </div>
                                         </div>
-                                        <div class="form-group mb-5">
+                                        <!-- <div class="form-group mb-5">
                                             <div class="g-recaptcha"
                                                 data-sitekey="6LfOLPAUAAAAAKt_qugGv98nelaACxBb5u-7F80c"></div>
-                                        </div>
+                                        </div> -->
                                         <div class="alert" id="oferta_alert"></div>
                                     </div>
                                 </div>
@@ -940,10 +940,72 @@
     <script src="./js/bootstrap.bundle.min.js"></script>
     <script src="./js/jquery.smartWizard.js"></script>
     <script src="./js/app.js?v=4"></script>
+    <script src="./js/validation.js"></script>
     <script>
         // var base_url = 'https://www.pergole-retractabile.ro/oferta-pret-new/'
         $(document).ready(function () {
             let isNextStepClicked = false;
+
+            function submitForm(e) {
+                e.preventDefault();
+                let formData = $('#new-form').serializeArray();
+                console.log('Form Data:', formData);
+                let formObject = {};
+
+                // Iterate over the array to create an object
+                formData.forEach(function (item) {
+                    formObject[item.name] = item.value;
+                });
+
+                let validationResult = validateForm(formObject);
+
+                if (!validationResult.isValid) {
+                    // Display validation errors
+                    let errorHtml = '<div class="alert alert-danger"><ul>';
+                    for (let field in validationResult.errors) {
+                        errorHtml += '<li>' + validationResult.errors[field] + '</li>';
+                    }
+                    errorHtml += '</ul></div>';
+                    $('#oferta_alert').html(errorHtml);
+                    return;
+                }
+
+                $.ajax({
+                    url: '/submit-form',
+                    method: 'POST',
+                    data: formData,
+                    success: function (response) {
+                        console.log('Form submitted successfully:', response);
+
+                        // You can add code here to show a success message to the user
+                        $('#oferta_alert').html('');
+                        $('#oferta_alert').html('<div class="alert alert-success">Formularul a fost trimis cu succes! Veți primi un email de confirmare în curând.</div>');
+                    },
+                    error: function (xhr, status, error) {
+                        console.error('Error submitting form:', error);
+                        // You can add code here to show an error message to the user
+
+                        $('#oferta_alert').html('<div class="alert alert-danger">A apărut o eroare la trimiterea formularului. Vă rugăm să încercați din nou.</div>');
+                        if (xhr.status === 400 && xhr.responseJSON && xhr.responseJSON.errors) {
+                            // Display server-side validation errors
+                            let errorHtml = '<div class="alert alert-danger"><ul>';
+                            for (let field in xhr.responseJSON.errors) {
+                                errorHtml += '<li>' + xhr.responseJSON.errors[field] + '</li>';
+                            }
+                            errorHtml += '</ul></div>';
+                            $('#oferta_alert').html(errorHtml);
+                        } else {
+                            $('#oferta_alert').html('<div class="alert alert-danger">A apărut o eroare la trimiterea formularului.</div>');
+                        }
+                    }
+                });
+            }
+
+            // Submit form when SEND button is clicked
+            $(document).on('click', '.sw-btn-submit', function (e) {
+                e.preventDefault();
+                submitForm(e);  // Call the form submission function
+            });
 
             $('#smartwizard').smartWizard({
                 selected: 0,
@@ -963,7 +1025,7 @@
                     speed: '200',
                 },
                 toolbar: {
-                    extraHtml: '<button type="submit" style="display: none" class="btn sw-btn sw-btn-submit">TRIMITE SOLICITAREA!</button>'
+                    extraHtml: '<button type="submit" style="display: none" class="btn sw-btn sw-btn-submit">SEND</button>'
                 },
                 getContent: provideContent
             });
@@ -975,10 +1037,10 @@
                     $('.sw-btn-prev').addClass('back-to-site').html('Back to site');
                 } else if (stepPosition === 'last') {
                     $(".sw-btn-next").hide();
-                    $('.sw-btn-submit').show();
+                    $('.sw-btn-submit').show(); // Show submit button at last step
                 } else {
                     $(".sw-btn-next").show();
-                    $('.sw-btn-submit').hide();
+                    $('.sw-btn-submit').hide(); // Hide submit button for other steps
                     $('.sw-btn-prev').removeClass('back-to-site').html('ÎNAPOI');
                 }
                 if (stepIndex === 2 || stepIndex === 3) {
@@ -1110,7 +1172,7 @@
 
             $('a[data-type]').on('click', function (e) {
                 e.preventDefault();
-                $.post('http://localhost:3000/get_pergola', $(this).data(), function (data) {
+                $.post('http://localhost:3000/get_pergola/', $(this).data(), function (data) {
                     $('#pergola_type').html(data.html);
                     $('#pergola_height').html(data.height);
                     if (data.width) {
@@ -1207,6 +1269,9 @@
                 $(this).parent().parent().parent().remove();
             });
         });
+
+
+
         function scroll_to(element_class, nav_height) {
 
             let scroll_to = 0;
@@ -1216,7 +1281,7 @@
             }
         }
     </script>
-    <script src="https://www.google.com/recaptcha/api.js" async defer></script>
+    <!-- <script src="https://www.google.com/recaptcha/api.js" async defer></script> -->
 </body>
 
 </html>
