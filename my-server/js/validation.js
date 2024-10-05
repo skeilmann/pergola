@@ -14,6 +14,10 @@ function validatePhone(phone) {
     return phoneRegex.test(phone);
 }
 
+function validateField(checkfield) {
+    return checkfield === 'on'; // Ensure the checkbox is checked
+}
+
 function validateForm(formData) {
     const errors = {};
 
@@ -29,6 +33,10 @@ function validateForm(formData) {
         errors.c_telefon = "Numărul de telefon nu este valid.";
     }
 
+    if (!validateField(formData.gdpr)) {
+        errors.gdpr = "Trebuie să acceptați prelucrarea datelor personale";
+    }
+
     // Add more validations as needed
 
     return {
@@ -36,6 +44,8 @@ function validateForm(formData) {
         errors: errors
     };
 }
+
+
 
 module.exports = {
     validateForm

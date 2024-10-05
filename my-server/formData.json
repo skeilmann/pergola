@@ -1,5 +1,58 @@
-{
-  "html": "<h1>Default Pergola</h1>",
-  "height": "Default Height",
-  "width": "Default Width"
-}
+[
+  {
+    "id": 1728116134467,
+    "timestamp": "2024-10-05T08:15:34.467Z",
+    "data": {
+      "token": "",
+      "oferta": "",
+      "nume": "george",
+      "owner": "Am o locație HoReCa",
+      "c_telefon": "1234567890",
+      "c_email": "gheorghe91@hotmail.com",
+      "c_sediu": "",
+      "gdpr": "on"
+    }
+  },
+  {
+    "id": 1728120251832,
+    "timestamp": "2024-10-05T09:24:11.832Z",
+    "data": {
+      "token": "",
+      "oferta": "",
+      "nume": "george",
+      "owner": "Sunt persoană fizică",
+      "c_telefon": "1234567890",
+      "c_email": "gheorghe91@hotmail.com",
+      "c_sediu": "",
+      "gdpr": "on"
+    }
+  },
+  {
+    "id": 1728120515719,
+    "timestamp": "2024-10-05T09:28:35.719Z",
+    "data": {
+      "token": "",
+      "oferta": "",
+      "nume": "george",
+      "owner": "Sunt persoană fizică",
+      "c_telefon": "1234567890",
+      "c_email": "gheorghe91@hotmail.com",
+      "c_sediu": "",
+      "gdpr": "on"
+    }
+  },
+  {
+    "id": 1728120694525,
+    "timestamp": "2024-10-05T09:31:34.525Z",
+    "data": {
+      "token": "",
+      "oferta": "",
+      "nume": "george",
+      "owner": "Sunt persoană fizică",
+      "c_telefon": "1234567890",
+      "c_email": "gheorghe91@hotmail.com",
+      "c_sediu": "",
+      "gdpr": "on"
+    }
+  }
+]

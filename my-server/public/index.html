@@ -20,6 +20,26 @@
     <!-- <link href="https://www.pergole-retractabile.ro/oferta-pret-new/assets/fontawesome/css/all.min.css" rel="stylesheet"
         type="text/css" /> -->
     <style>
+        /* Red outline for invalid fields */
+        .invalid-field-parent {
+            position: relative;
+        }
+
+        .invalid-field-child {
+            outline: rgb(198, 116, 116) 2px solid;
+        }
+
+        /* Style for the error message that appears above the field */
+        .invalid-field-parent::after {
+            content: attr(data-error);
+            color: red;
+            font-size: 12px;
+            position: absolute;
+            top: 0px;
+            /* Adjust this depending on your layout */
+            right: 0;
+        }
+
         .form-check-input {
             --bs-border-color: #000
         }
@@ -949,7 +969,7 @@
             function submitForm(e) {
                 e.preventDefault();
                 let formData = $('#new-form').serializeArray();
-                console.log('Form Data:', formData);
+                // console.log('Form Data:', formData);
                 let formObject = {};
 
                 // Iterate over the array to create an object
@@ -959,14 +979,20 @@
 
                 let validationResult = validateForm(formObject);
 
+                // if (!validationResult.isValid) {
+                //     // Display validation errors
+                //     let errorHtml = '<div class="alert alert-danger"><ul>';
+                //     for (let field in validationResult.errors) {
+                //         errorHtml += '<li>' + validationResult.errors[field] + '</li>';
+                //     }
+                //     errorHtml += '</ul></div>';
+                //     $('#oferta_alert').html(errorHtml);
+                //     return;
+                // }
+
                 if (!validationResult.isValid) {
-                    // Display validation errors
-                    let errorHtml = '<div class="alert alert-danger"><ul>';
-                    for (let field in validationResult.errors) {
-                        errorHtml += '<li>' + validationResult.errors[field] + '</li>';
-                    }
-                    errorHtml += '</ul></div>';
-                    $('#oferta_alert').html(errorHtml);
+                    // Display validation errors directly on the fields
+                    displayFieldErrors(validationResult.errors);
                     return;
                 }
 
@@ -976,10 +1002,25 @@
                     data: formData,
                     success: function (response) {
                         console.log('Form submitted successfully:', response);
+                        alert('Form submitted successfully!');
 
                         // You can add code here to show a success message to the user
                         $('#oferta_alert').html('');
                         $('#oferta_alert').html('<div class="alert alert-success">Formularul a fost trimis cu succes! Veți primi un email de confirmare în curând.</div>');
+
+                        // Disable all form fields
+                        $('input, textarea, select').prop('disabled', true); // Disable all input fields
+                        $('input[type="checkbox"], input[type="radio"]').prop('disabled', true); // Disable checkboxes and radio buttons
+
+                        // Create and show the return button
+                        const returnButton = $('<button id="returnHome" class="btn btn-primary">Înapoi la pagina principală</button>');
+                        $('#oferta_alert').append(returnButton);
+
+                        // Add click event for the return button
+                        returnButton.on('click', function () {
+                            // Redirect to the home page
+                            window.location.href = 'http::/google.com'; // Change this to your home page URL
+                        });
                     },
                     error: function (xhr, status, error) {
                         console.error('Error submitting form:', error);
