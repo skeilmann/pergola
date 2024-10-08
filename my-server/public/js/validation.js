@@ -24,18 +24,26 @@ function validateForm(formData) {
 
     if (!validateName(formData.nume)) {
         errors.nume = "Numele este obligatoriu.";
+    } else {
+        hideError('nume');
     }
 
     if (!validateEmail(formData.c_email)) {
         errors.c_email = "Adresa de email nu este validă.";
+    } else {
+        hideError('c_email');
     }
 
     if (!validatePhone(formData.c_telefon)) {
         errors.c_telefon = "Numărul de telefon nu este valid.";
+    } else {
+        hideError('c_telefon');
     }
 
     if (!validateField(formData.gdpr)) {
-        errors.gdpr = "Trebuie să acceptați prelucrarea datelor personale.";
+        errors.gdpr = "Trebuie să acceptați prelucrarea datelor personale";
+    } else {
+        hideError('gdpr');
     }
 
     // Add more validations as needed
@@ -64,8 +72,17 @@ function displayFieldErrors(errorFields) {
         const $parent = $field.parent(); // Select the immediate parent element
         // Add the invalid class and set the data-error attribute for error styling
         $field.addClass('invalid-field-child');
-        $parent.addClass('invalid-field-parent').attr('data-error', errorMessage);
+        $parent.addClass('invalid-field-parent mb-4').attr('data-error', errorMessage);
     }
+}
+
+// Function to hide error message if a field passes validation
+function hideError(field) {
+    const $field = $('[name="' + field + '"]'); // Select the field by name attribute
+    const $parent = $field.parent(); // Select the immediate parent element
+    // Remove the error classes and error message
+    $field.removeClass('invalid-field-child');
+    $parent.removeClass('invalid-field-parent mb-4').removeAttr('data-error');
 }
 
 // Make the validateForm function available globally

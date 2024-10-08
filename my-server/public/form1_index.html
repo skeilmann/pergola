@@ -1,39 +1,17 @@
-<div class="row">
+<div class="row" id="form_1">
     <div class="col-lg-6">
         <div class="fw-bold"><span class="text-danger">*</span> Dimensiuni:</div>
         <div class="row">
             <div class="col-4">
                 <div class="mb-3">
                     <label class="form-label">Lățime</label>
-                    <select id="pergola_height" name="pergola[height]" class="form-select">
-                        <option value="300">300</option>
-                        <option value="400">400</option>
-                        <option value="500">500</option>
-                        <option value="600">600</option>
-                        <option value="700">700</option>
-                        <option value="800">800</option>
-                        <option value="900">900</option>
-                        <option value="1000">1000</option>
-                    </select>
+                    <select id="pergola_height" name="pergola[height]" class="form-select dimension-select"></select>
                 </div>
             </div>
             <div class="col-4">
                 <div class="mb-3">
                     <label class="form-label">Lungimea</label>
-                    <select name="pergola[width]" class="form-select" id="pergola_width">
-                        <option value="300">300</option>
-                        <option value="400">400</option>
-                        <option value="450">450</option>
-                        <option value="500">500</option>
-                        <option value="600">600</option>
-                        <option value="700">700</option>
-                        <option value="800">800</option>
-                        <option value="900">900</option>
-                        <option value="1000">1000</option>
-                        <option value="1100">1100</option>
-                        <option value="1200">1200</option>
-                        <option value="1300">1300</option>
-                    </select>
+                    <select id="pergola_width" name="pergola[width]" class="form-select dimension-select"></select>
                 </div>
             </div>
             <div class="col-4">
@@ -45,13 +23,20 @@
         </div>
     </div>
     <div class="col-lg-6">
-        <div class="row">
+        <div class="row center">
             <div class="col-lg-4 col-6 mb-lg-0 mb-3">
                 <div class="">
-                    <label class="fw-bold mb-lg-4 mb-1">Vopsea structură </label>
+                    <label class="fw-bold mb-lg-4 mb-1">Vopsea structură</label>
                     <div id="vopsea" class="mb-2" style="max-width: 7rem;"></div>
                 </div>
                 <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tip_vopsea">Alege culoare</a>
+            </div>
+            <div class="col-lg-4 col-6 mb-lg-0 mb-3">
+                <div class="">
+                    <label class="fw-bold mb-lg-4 mb-1">Vopsea lamele</label>
+                    <div id="lamele" class="mb-2" style="max-width: 7rem;"></div>
+                </div>
+                <a href="#" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#tip_lamele">Alege culoare</a>
             </div>
             <div class="col-lg-4 col-6 mb-lg-0 mb-3" id="box-membrana">
                 <div class="">
@@ -112,19 +97,17 @@
                 <label class="form-label">Închideri sticlă:</label>
                 <select class="form-select" name="add_sticla">
                     <option></option>
-                    <option>SISTEME BALUSTRADĂ</option>
-                    <option>SISTEME TRECERE</option>
-                    <option>SISTEME SLIDING</option>
-                    <option>GLASS ROOF</option>
+                    <option>Sistem manual tip Sliding</option>
+                    <option>Sistem automatizat tip Balustrada</option>
+                    <option>Sistem automatizat tip Trecere</option>
                 </select>
             </div>
             <div class="mb-3 col-xxl-2 col-xl-3 col-md-6 col-6">
                 <label class="form-label">Sisteme umbrire:</label>
                 <select class="form-select" name="add_umbrire">
                     <option></option>
-                    <option>SISTEM UMBRIRE VERTICAL</option>
-                    <option>SISTEM UMBRIRE ORIZONTAL</option>
-                    <option>PERETE DE ALUMINIU (AluWall)</option>
+                    <option>Umbrire tip Zip</option>
+                    <option>Jaluzele</option>
                 </select>
             </div>
             <div class="mb-3 col-xxl-2 col-xl-3 col-md-6 col-6">
@@ -171,3 +154,41 @@
         </div>
     </div>
 </div>
+<script>
+    // Function to create options dynamically
+    function createOptions(startPoint, lastPoint, incr, el) {
+        for (let i = startPoint; i <= lastPoint; i += incr) {
+            const option = document.createElement("option");
+            option.value = i;
+            option.text = i + " mm";
+            el.appendChild(option); // Append option to the select element
+        }
+    };
+
+    let category = $('input[name="model"]:checked').val(); // Get selected category value
+    let heightStart, heightEnd, widthStart = 1500, widthEnd = 7000, widthIncr = 250, heightIncr = 216;
+
+    // Ensure category value comparison uses string types
+    if (category === 'classic') {
+        heightStart = 1596;
+        heightEnd = 5871;
+        heightIncr = 225;
+    } else if (category === 'urban') {
+        heightStart = 2023;
+        heightEnd = 5047;
+    } else if (category === 'freedom') {
+        heightStart = 2293;
+        heightEnd = 7045;
+    } else if (category === 'infinity') {
+        heightStart = 2093;
+        heightEnd = 6845;
+    }
+
+    // Get the select elements by ID
+    const heightSelect = document.getElementById('pergola_height');
+    const widthSelect = document.getElementById('pergola_width');
+
+    // Call createOptions for both height and width
+    createOptions(heightStart, heightEnd, heightIncr, heightSelect);
+    createOptions(widthStart, widthEnd, widthIncr, widthSelect);
+</script>

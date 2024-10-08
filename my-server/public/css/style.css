@@ -1,3 +1,7 @@
+:root {
+    --button-border-radius: 0px;
+}
+
 html {
     font-size: 14px
 }
@@ -107,8 +111,9 @@ header img {
 }
 
 .btn-danger {
-    background-color: #710821;
-    border-color: #710821
+    background-color: var(--sw-anchor-active-primary-color);
+    border-color: var(--sw-anchor-active-primary-color);
+    border-radius: var(--button-border-radius);
 }
 
 .btn-danger:hover {
@@ -176,6 +181,42 @@ header img {
 .radio-input {
     display: none;
 }
+
+.fa-plus:before {
+    content: url(../img/plus.svg);
+}
+
+.fa-minus:before {
+    content: url(../img/minus.svg);
+}
+
+.fa {
+    -moz-osx-font-smoothing: grayscale;
+    font-style: normal;
+    font-variant: normal;
+    font-size: 14px;
+}
+
+.btn-last {
+    display: block;
+    text-decoration: none;
+    text-align: center;
+    text-transform: none;
+    vertical-align: middle;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    user-select: none;
+    margin-left: var(--button-border-radius);
+    margin-right: var(--button-border-radius);
+    cursor: pointer;
+    padding: .375rem .75rem;
+    border-radius: 0;
+    font-weight: 400;
+    color: var(--sw-toolbar-btn-color);
+    background-color: var(--sw-toolbar-btn-background-color);
+    border: 1px solid var(--sw-toolbar-btn-background-color);
+}
+
 
 @media (max-width: 768px) {
     .check-img:before {

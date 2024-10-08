@@ -1,12 +1,28 @@
 [
   {
-    "id": 1728116134467,
-    "timestamp": "2024-10-05T08:15:34.467Z",
+    "id": 1728359665549,
+    "timestamp": "2024-10-08T03:54:25.549Z",
     "data": {
       "token": "",
       "oferta": "",
+      "cat": "1",
+      "model": "infinity",
+      "pergola": {
+        "height": "2093",
+        "width": "1500",
+        "buc": "1",
+        "lumini": "none",
+        "senzor_ploaie": "on"
+      },
+      "add_sticla": "Sistem manual tip Sliding",
+      "add_umbrire": "",
+      "deking": {
+        "mp": ""
+      },
+      "add_altele": "",
+      "comment": "",
       "nume": "george",
-      "owner": "Am o locație HoReCa",
+      "owner": "Reprezint o societate comercială",
       "c_telefon": "1234567890",
       "c_email": "gheorghe91@hotmail.com",
       "c_sediu": "",
@@ -14,8 +30,8 @@
     }
   },
   {
-    "id": 1728120251832,
-    "timestamp": "2024-10-05T09:24:11.832Z",
+    "id": 1728359937591,
+    "timestamp": "2024-10-08T03:58:57.591Z",
     "data": {
       "token": "",
       "oferta": "",
@@ -28,8 +44,8 @@
     }
   },
   {
-    "id": 1728120515719,
-    "timestamp": "2024-10-05T09:28:35.719Z",
+    "id": 1728359997970,
+    "timestamp": "2024-10-08T03:59:57.970Z",
     "data": {
       "token": "",
       "oferta": "",
@@ -42,8 +58,8 @@
     }
   },
   {
-    "id": 1728120694525,
-    "timestamp": "2024-10-05T09:31:34.525Z",
+    "id": 1728360049641,
+    "timestamp": "2024-10-08T04:00:49.641Z",
     "data": {
       "token": "",
       "oferta": "",

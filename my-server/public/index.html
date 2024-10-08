@@ -20,7 +20,6 @@
     <!-- <link href="https://www.pergole-retractabile.ro/oferta-pret-new/assets/fontawesome/css/all.min.css" rel="stylesheet"
         type="text/css" /> -->
     <style>
-        /* Red outline for invalid fields */
         .invalid-field-parent {
             position: relative;
         }
@@ -35,9 +34,8 @@
             color: red;
             font-size: 12px;
             position: absolute;
-            top: 0px;
-            /* Adjust this depending on your layout */
-            right: 0;
+            bottom: -20px;
+            left: 0;
         }
 
         .form-check-input {
@@ -53,8 +51,15 @@
             font-weight: 400
         }
 
+        .form-select {
+            border-radius: var(--button-border-radius);
+            border: 2px solid #000;
+
+        }
+
         .form-control {
             border: 2px solid #000;
+            border-radius: var(--button-border-radius);
         }
 
         .form-control.is-invalid {
@@ -244,8 +249,7 @@
                                             <div class="col-12 col-lg-9 mb-3">
                                                 <label class="form-label"><span class="text-danger">*</span> Nume,
                                                     Prenume</label>
-                                                <input type="text" class="form-control bg-transparent " name="nume"
-                                                    placeholder>
+                                                <input type="text" class="form-control" name="nume" placeholder>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
@@ -265,23 +269,20 @@
                                             <div class="col-12 col-lg-9 mb-3">
                                                 <label class="form-label"><span class="text-danger">*</span> Nr.
                                                     telefon</label>
-                                                <input type="text" class="form-control bg-transparent " name="c_telefon"
-                                                    placeholder>
+                                                <input type="text" class="form-control" name="c_telefon" placeholder>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="col-12 col-lg-9 mb-3">
                                                 <label class="form-label"> <span class="text-danger">*</span>
                                                     Email</label>
-                                                <input type="text" class="form-control bg-transparent " name="c_email"
-                                                    placeholder>
+                                                <input type="text" class="form-control" name="c_email" placeholder>
                                             </div>
                                         </div>
                                         <div class="col-lg-6">
                                             <div class="col-12 col-lg-9 mb-3">
                                                 <label class="form-label">Locație proiect (oraș/județ)</label>
-                                                <input type="text" class="form-control bg-transparent " name="c_sediu"
-                                                    placeholder>
+                                                <input type="text" class="form-control" name="c_sediu" placeholder>
                                             </div>
                                         </div>
                                     </div>
@@ -295,15 +296,6 @@
                                                     prelucrarea
                                                     <a href="https://pergole-retractabile.ro/gdpr/"> datelor mele
                                                         personale și politicii de confidențialitate</a>.
-                                                </label>
-                                            </div>
-                                        </div>
-                                        <div class="form-group mb-4">
-                                            <div class="form-check">
-                                                <input type="checkbox" name="newsletter" class="form-check-input"
-                                                    id="newsletter">
-                                                <label class="form-check-label" for="newsletter">
-                                                    Vreau să mă înscriu la newsletter.
                                                 </label>
                                             </div>
                                         </div>
@@ -979,22 +971,22 @@
 
                 let validationResult = validateForm(formObject);
 
-                // if (!validationResult.isValid) {
-                //     // Display validation errors
-                //     let errorHtml = '<div class="alert alert-danger"><ul>';
-                //     for (let field in validationResult.errors) {
-                //         errorHtml += '<li>' + validationResult.errors[field] + '</li>';
-                //     }
-                //     errorHtml += '</ul></div>';
-                //     $('#oferta_alert').html(errorHtml);
-                //     return;
-                // }
-
                 if (!validationResult.isValid) {
+                    // Display validation errors
+                    let errorHtml = '<div class="alert alert-danger"><ul>';
+                    for (let field in validationResult.errors) {
+                        errorHtml += '<li>' + validationResult.errors[field] + '</li>';
+                    }
+                    errorHtml += '</ul></div>';
+                    $('#oferta_alert').html(errorHtml);
+
                     // Display validation errors directly on the fields
                     displayFieldErrors(validationResult.errors);
+
                     return;
                 }
+
+
 
                 $.ajax({
                     url: '/submit-form',
@@ -1002,18 +994,16 @@
                     data: formData,
                     success: function (response) {
                         console.log('Form submitted successfully:', response);
-                        alert('Form submitted successfully!');
 
-                        // You can add code here to show a success message to the user
                         $('#oferta_alert').html('');
                         $('#oferta_alert').html('<div class="alert alert-success">Formularul a fost trimis cu succes! Veți primi un email de confirmare în curând.</div>');
 
                         // Disable all form fields
-                        $('input, textarea, select').prop('disabled', true); // Disable all input fields
+                        $('input, textarea, select, button').prop('disabled', true); // Disable all input fields
                         $('input[type="checkbox"], input[type="radio"]').prop('disabled', true); // Disable checkboxes and radio buttons
 
                         // Create and show the return button
-                        const returnButton = $('<button id="returnHome" class="btn btn-primary">Înapoi la pagina principală</button>');
+                        const returnButton = $('<button id="returnHome" class="btn-last">Înapoi la pagina principală</button>');
                         $('#oferta_alert').append(returnButton);
 
                         // Add click event for the return button
@@ -1066,6 +1056,7 @@
                     speed: '200',
                 },
                 toolbar: {
+                    position: 'bottom',
                     extraHtml: '<button type="submit" style="display: none" class="btn sw-btn sw-btn-submit">SEND</button>'
                 },
                 getContent: provideContent
@@ -1309,10 +1300,15 @@
                 e.preventDefault();
                 $(this).parent().parent().parent().remove();
             });
+
+            // Move toolbar with buttons
+
+            $('.toolbar').appendTo('.tab-content');
+            $('.toolbar').css({
+                'padding-bottom': '15px',
+            })
+
         });
-
-
-
         function scroll_to(element_class, nav_height) {
 
             let scroll_to = 0;
